@@ -1,17 +1,3 @@
 @import 'core/reset';
-//@import 'layout/body';
+@import 'layout/body';
 
-.favorite {
-    border: 2px solid black;
-    list-style-type: none;
-}
-
-.section {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.js-li {
-    list-style-type: none;
-    align-items: center;
-}

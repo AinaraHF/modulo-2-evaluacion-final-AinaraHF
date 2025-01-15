@@ -2,6 +2,7 @@
 
 const searchInput = document.querySelector('.js-search_input');
 const searchBtn = document.querySelector('.js-search_btn');
+const resetBtn = document.querySelector('.js-reset_btn');
 const searchList = document.querySelector('.js-search_list');
 const favList = document.querySelector('.js-fav_list');
 
@@ -72,3 +73,9 @@ const favAnimeSerieLS = localStorage.getItem('favAnimeSeries');
     }
     renderSeries(favSeries,favList);
 
+function handleReset(){
+  localStorage.removeItem('favAnimeSeries');
+  
+}
+
+resetBtn.addEventListener('click', handleReset);
