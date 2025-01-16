@@ -8,24 +8,50 @@
     margin: 10px;
     padding: 3px;
     background-color: lightsteelblue;
+    cursor: pointer;
 }
+.btn:hover{
+        background-color: black;
+        color: lightsteelblue;
+    }
+
 .favorite {
     display:flex;
     flex-direction: column;
     align-items: center;
+    border: 5px solid lightsteelblue;
     background-color: black;
     color: white;
     list-style-type: none;
+    padding-top: 15px;
+    margin-bottom: 5px;
 }
 
 .series {
     display: flex;
     justify-content: space-around;
-    padding: 10px;
-      
+    &-fav {
+        padding: 10px;
+    }
+    &-all {
+        
+        &_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        }
+    }      
+    
 }
 
 .js-li {
     list-style-type: none;
-    text-wrap: wrap;
+    padding-top: 20px;
+    width: 270px;
 }
+
+
+.hidden {
+    display: none;
+}
+

@@ -3,6 +3,7 @@
 const searchInput = document.querySelector('.js-search_input');
 const searchBtn = document.querySelector('.js-search_btn');
 const resetBtn = document.querySelector('.js-reset_btn');
+const deleteBtn = document.querySelector('.js-delete_btn');
 const searchList = document.querySelector('.js-search_list');
 const favList = document.querySelector('.js-fav_list');
 
@@ -17,6 +18,7 @@ function handleSearch(ev) {
     .then((info) => {
       searchSeries = info.data;
       renderSeries(searchSeries, searchList);
+      listenerSeries();
     });
 };
 
@@ -42,12 +44,14 @@ function renderSeries(series, list) {
    const findFavSerie = favSeries.find((favSerie) => favSerie.mal_id === serie.mal_id)
    if(findFavSerie){
       li.setAttribute('class', 'favorite');
-   }
-    }
-    listenerSeries();
-   
+      const x = document.createElement('button');
+      x.setAttribute('class', 'js-remove');
+      const xText = document.createTextNode('X');
+      x.appendChild(xText);
+      li.appendChild(x);
+      };
+    };
   };
-  
 
 function handleClickFav(event) {
   const liClicked = parseInt(event.currentTarget.id);
@@ -57,25 +61,56 @@ function handleClickFav(event) {
     favSeries.push(serieSelected);};
     localStorage.setItem('favAnimeSeries', JSON.stringify(favSeries));
     renderSeries(favSeries, favList);
+    listenerX();
+    renderSeries(searchSeries, searchList);
+    listenerSeries();
   };
 
-  const listenerSeries = () => {
-    const allSeriesLi = document.querySelectorAll('.js-li');
-    for (const li of allSeriesLi) {
-      li.addEventListener('click', handleClickFav);
-    }
-  };
+const listenerSeries = () => {
+  const allSeriesLi = document.querySelectorAll('.js-li');
+  for (const li of allSeriesLi) {
+    li.addEventListener('click', handleClickFav);
+  }
+};
 
+function handleReset(){
+  localStorage.removeItem('favAnimeSeries');  
+};
+
+resetBtn.addEventListener('click', handleReset);
+
+function handleDeleteAllFavs(){
+  localStorage.removeItem('favAnimeSeries');
+  favSeries = [];
+  favList.innerHTML = '';
+  renderSeries(searchSeries, searchList);
+  listenerSeries();
+};
+
+deleteBtn.addEventListener('click', handleDeleteAllFavs);
+
+
+function handleDeleteFav(ev){
+  const xClicked = parseInt(ev.target.parentElement.id);
+  const indexFavSelected = favSeries.findIndex((searchSerie) => searchSerie.mal_id === xClicked);
+  favSeries.splice(indexFavSelected,1);
+  localStorage.setItem('favAnimeSeries', JSON.stringify(favSeries));
+  renderSeries(favSeries, favList);
+  listenerX();
+  renderSeries(searchSeries, searchList);
+  listenerSeries();
+};
+
+const listenerX = () => {
+  const allX = document.querySelectorAll('.js-remove');
+  for (const x of allX) {
+    x.addEventListener('click', handleDeleteFav);
+  }
+};
 
 const favAnimeSerieLS = localStorage.getItem('favAnimeSeries');
   if (favAnimeSerieLS) {
       favSeries = JSON.parse(favAnimeSerieLS);
     }
     renderSeries(favSeries,favList);
-
-function handleReset(){
-  localStorage.removeItem('favAnimeSeries');
-  
-}
-
-resetBtn.addEventListener('click', handleReset);
+    listenerX();
