@@ -4,6 +4,7 @@ const searchInput = document.querySelector('.js-search_input');
 const searchBtn = document.querySelector('.js-search_btn');
 const resetBtn = document.querySelector('.js-reset_btn');
 const deleteBtn = document.querySelector('.js-delete_btn');
+const logBtn = document.querySelector('.js-log_btn');
 const searchList = document.querySelector('.js-search_list');
 const favList = document.querySelector('.js-fav_list');
 
@@ -35,7 +36,10 @@ function renderSeries(series, list) {
     const h3 = document.createElement('h3');
     const textH3 = document.createTextNode(serie.title);
     h3.appendChild(textH3);
-    li.append(image, h3);
+    const paragraph = document.createElement('p');
+    const textP = document.createTextNode(serie.episodes);
+    paragraph.appendChild(textP);
+    li.append(image, h3, paragraph);
     if (serie.images.webp.image_url === `https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png`) {
       image.setAttribute('src', 'https://placehold.co/210x295/ffffff/666666/png');
     } else {
@@ -114,3 +118,10 @@ const favAnimeSerieLS = localStorage.getItem('favAnimeSeries');
     }
     renderSeries(favSeries,favList);
     listenerX();
+
+logBtn.addEventListener('click', (ev) =>{
+  ev.preventDefault();
+  for (const serie of searchSeries) {
+    console.log(serie.title);
+  }
+})
