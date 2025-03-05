@@ -1,27 +1,36 @@
+*{
+background-color: black;
+margin: 10px;
+}
+
 .title {
     padding: 20px;
+    color: greenyellow;
 }
 .form {
     padding: 10px 20px;
 }
+
 .btn {
     margin: 10px;
     padding: 3px;
-    background-color: lightsteelblue;
+    background-color: greenyellow;
+    border-radius: 5px;
     cursor: pointer;
 }
-.btn:hover{
-        background-color: black;
-        color: lightsteelblue;
+.btn:hover {
+        background-color: purple;
+        color: white;
     }
 
 .favorite {
     display:flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
-    border: 5px solid lightsteelblue;
+    border: 5px solid greenyellow;
     background-color: black;
-    color: white;
+    color: greenyellow;
     list-style-type: none;
     padding-top: 15px;
     margin-bottom: 5px;
@@ -30,26 +39,54 @@
 .series {
     display: flex;
     justify-content: space-around;
-    &-fav {
-        padding: 10px;
+    &-favs {
+        padding: 10px;  
+        border: 5px dashed purple;
+        &_title {
+            color: greenyellow;
+            padding: 20px;
+        }
     }
     &-all {
-        
+        padding: 10px;
         &_list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
+        }
+        &_title {
+            color: greenyellow;
+            padding: 20px;
         }
     }      
     
 }
 
 .js-li {
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    color: white;
     list-style-type: none;
     padding-top: 20px;
     width: 270px;
 }
 
+.js-remove {
+    color: white;
+    font-size: 20px;
+}
+
+.js-search_input {
+    border: 1px solid greenyellow;
+    color: white;
+}
+
+.js-img {
+    width: 210px;
+    height: 295px;
+}
 
 .hidden {
     display: none;

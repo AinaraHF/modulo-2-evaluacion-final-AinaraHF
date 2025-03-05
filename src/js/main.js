@@ -19,7 +19,7 @@ function handleSearch(ev) {
     .then((info) => {
       searchSeries = info.data;
       renderSeries(searchSeries, searchList);
-      listenerSeries();
+      listenerSeries();     
     });
 };
 
@@ -33,11 +33,12 @@ function renderSeries(series, list) {
     li.setAttribute('class', 'js-li');
     list.appendChild(li);
     const image = document.createElement('img');
+    image.setAttribute('class', 'js-img');
     const h3 = document.createElement('h3');
     const textH3 = document.createTextNode(serie.title);
     h3.appendChild(textH3);
     const paragraph = document.createElement('p');
-    const textP = document.createTextNode(serie.episodes);
+    const textP = document.createTextNode(`Episodios: ${serie.episodes}`);
     paragraph.appendChild(textP);
     li.append(image, h3, paragraph);
     if (serie.images.webp.image_url === `https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png`) {
@@ -53,6 +54,7 @@ function renderSeries(series, list) {
       const xText = document.createTextNode('X');
       x.appendChild(xText);
       li.appendChild(x);
+      listenerX();
       };
     };
   };
