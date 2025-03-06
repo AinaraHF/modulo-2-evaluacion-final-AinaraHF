@@ -6,17 +6,24 @@ margin: 10px;
 .title {
     padding: 20px;
     color: greenyellow;
+    @media (max-width: 810px){
+        font-size: 26px;
+    }
 }
 .form {
     padding: 10px 20px;
 }
 
 .btn {
+    font-size: 22px;
     margin: 10px;
     padding: 3px;
     background-color: greenyellow;
     border-radius: 5px;
     cursor: pointer;
+    @media (max-width: 810px){
+        font-size: 16px;
+    }
 }
 .btn:hover {
         background-color: purple;
@@ -45,18 +52,24 @@ margin: 10px;
         &_title {
             color: greenyellow;
             padding: 20px;
+            @media (max-width: 810px){
+                font-size: 16px;
+            }
         }
     }
     &-all {
         padding: 10px;
         &_list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         }
         &_title {
             color: greenyellow;
             padding: 20px;
+            @media (max-width: 810px){
+                font-size: 16px;
+            }
         }
     }      
     
@@ -71,6 +84,9 @@ margin: 10px;
     list-style-type: none;
     padding-top: 20px;
     width: 270px;
+        @media (max-width: 810px){
+            max-width: 110px;
+    }
 }
 
 .js-remove {
@@ -81,14 +97,29 @@ margin: 10px;
 .js-search_input {
     border: 1px solid greenyellow;
     color: white;
+    font-size: 20px;
+    @media (max-width: 810px){
+        font-size: 16px;
+}
 }
 
 .js-img {
     width: 210px;
     height: 295px;
+    @media (max-width: 810px){
+        width: 105px;
+        height: 145px;
+    }
 }
 
 .hidden {
     display: none;
 }
 
+h3 {
+    max-width: 220px;
+    @media (max-width: 810px){
+        font-size: 16px;
+        max-width: 110px;
+    }
+}
